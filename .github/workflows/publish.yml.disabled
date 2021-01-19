@@ -1,5 +1,8 @@
-name: CI
-on: [push]
+name: Create Release
+on:
+  push:
+    - 'v*'
+
 jobs:
   build:
     name: Lint and test on Node ${{ matrix.node }} and ${{ matrix.os }}
@@ -7,7 +10,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: ['10.x', '12.x', '14.x', '15.x']
+        node: ['15.x']
         os: [ubuntu-latest]
 
     steps:
@@ -27,3 +30,11 @@ jobs:
 
       - name: Test
         run: yarn test --ci --coverage --maxWorkers=2
+
+      - name: Build
+        run: yarn build
+      
+      - name: Release to NPM
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: yarn publish:npm
