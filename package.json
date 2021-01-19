@@ -1,0 +1,61 @@
+{
+  "name": "@lytrax/lxlib",
+  "author": "Christos Lytras",
+  "version": "0.0.0-development",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/lxlib.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "semantic-release": "semantic-release"
+  },
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "size-limit": [
+    {
+      "path": "dist/lxlib.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/lxlib.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^4.9.1",
+    "husky": "^4.3.8",
+    "size-limit": "^4.9.1",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.1.0",
+    "typescript": "^4.1.3",
+    "semantic-release": "^17.3.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clytras/LXLib.git"
+  }
+}
