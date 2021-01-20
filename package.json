@@ -32,7 +32,7 @@
     "--publish:npm": "cross-var cross-env npm_config_registry=https://registry.npmjs.org/ npm publish --access=public --tag $npm_package_version",
     "deploy": "np",
     "release": "np --no-publish",
-    "postrelease": "npm publish"
+    "--postrelease": "npm publish"
   },
   "peerDependencies": {},
   "husky": {
