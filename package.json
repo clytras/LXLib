@@ -7,8 +7,8 @@
   "module": "dist/lxlib.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
-    "dist",
-    "src"
+    "dist/**/*",
+    "src/**/*"
   ],
   "publishConfig": {
     "access": "public",
@@ -22,11 +22,10 @@
     "build": "tsdx build --entry src/index.ts --entry src/utils/index.ts",
     "test": "tsdx test",
     "lint": "tsdx lint src",
-    "prepare": "tsdx build",
+    "prepare": "patch-package && yarn build",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "semantic-release": "semantic-release",
-    "postinstall": "patch-package",
     "--preversion": "yarn lint && yarn test",
     "--postversion": "cross-var publish:git && yarn publish:npm && echo \"Successfully released version $npm_package_version!\"",
     "--publish:git": "cross-var git add . && git commit -m \"chore(publish): version v$npm_package_version\" && git push --follow-tags && git push",
