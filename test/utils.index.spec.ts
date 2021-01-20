@@ -1,5 +1,5 @@
 import isHexColor from 'validator/lib/isHexColor';
-import { randomColor } from '.';
+import { randomColor } from '../src/utils';
 
 describe('utils', () => {
   it('should validate randomColor', () => {
