@@ -17,7 +17,8 @@ const sourcePath = './src';
   (await copyDistFiles()) &&
   (await fixSourceMapPaths()) &&
   (await copySourceFiles()) &&
-  (await copyPackageFiles());
+  (await copyPackageFiles()) &&
+  (await patchPackageJson());
 })();
 
 async function deleteReleaseDir() {
@@ -126,6 +127,27 @@ async function copyPackageFiles() {
       'Fail to copy package files to release'
     )}: ${error.message}`;
     copyPkgFilesSpinner.fail();
+    return false;
+  }
+}
+
+async function patchPackageJson() {
+  const patchPkgJsonSpinner = ora('Patching package.json for release');
+
+  try {
+    patchPkgJsonSpinner.start();
+    const file = `${releasePath}/package.json`;
+    const json = fs.readFileSync(`${releasePath}/package.json`, { encoding: 'utf-8' });
+    const data = JSON.parse(json);
+    delete data.scripts.postinstall;
+    fs.writeFileSync(file, JSON.stringify(data, null, 2), { encoding: 'utf-8' });
+    patchPkgJsonSpinner.succeed();
+    return true;
+  } catch (error) {
+    patchPkgJsonSpinner.text = `${chalk.red(
+      'Fail to patch package.json for release'
+    )}: ${error.message}`;
+    patchPkgJsonSpinner.fail();
     return false;
   }
 }

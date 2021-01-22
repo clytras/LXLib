@@ -22,7 +22,7 @@
     "build": "tsdx build --entry src/**/*.ts",
     "test": "tsdx test",
     "lint": "tsdx lint src",
-    "prepare": "patch-package && yarn build",
+    "postinstall": "patch-package",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "semantic-release": "semantic-release",
