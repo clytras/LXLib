@@ -23,7 +23,7 @@
     "test": "tsdx test",
     "lint": "tsdx lint src",
     "postinstall": "patch-package",
-    "prepare": "node ./scripts/makeRelease.js",
+    "version": "node ./scripts/makeRelease.js",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "semantic-release": "semantic-release",
