@@ -16,7 +16,7 @@ const sourcePath = './src';
   (await deleteReleaseDir()) &&
   (await copyDistFiles()) &&
   (await fixSourceMapPaths()) &&
-  (await copySourceFiles()) &&
+  // (await copySourceFiles()) &&
   (await copyPackageFiles()) &&
   (await patchPackageJson());
 })();
@@ -89,6 +89,7 @@ async function fixSourceMapPaths() {
   }
 }
 
+// eslint-disable-next-line no-unused-vars
 async function copySourceFiles() {
   const copySrcFilesSpinner = ora('Copying source files for release');
 
@@ -142,6 +143,17 @@ async function patchPackageJson() {
 
     delete data.files;
     delete data.scripts.postinstall;
+    delete data.prettier;
+    delete data.husky;
+    delete data.config;
+    delete data.devDependencies;
+    delete data['size-limit'];
+
+    for (const name in data.scripts) {
+      if (/^--/.test(name)) {
+        delete data.scripts[name];
+      }
+    }
 
     fs.writeFileSync(file, JSON.stringify(data, null, 2), { encoding: 'utf-8' });
     patchPkgJsonSpinner.succeed();

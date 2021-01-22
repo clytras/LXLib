@@ -1,22 +1,24 @@
 {
   "name": "@lytrax/lxlib",
-  "author": "Christos Lytras",
+  "author": {
+    "name": "Christos Lytras",
+    "email": "christos.lytras@gmail.com"
+  },
   "version": "0.0.14",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/lxlib.esm.js",
   "typings": "dist/index.d.ts",
-  "files": [
-    "dist/**/*",
-    "src/**/*"
-  ],
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build --entry src/**/*.ts",
@@ -26,13 +28,13 @@
     "version": "node ./scripts/makeRelease.js",
     "size": "size-limit",
     "analyze": "size-limit --why",
-    "semantic-release": "semantic-release",
+    "deploy:ci": "np patch --contents=release",
+    "deploy": "np --contents=release",
     "--preversion": "yarn lint && yarn test",
     "--postversion": "cross-var publish:git && yarn publish:npm && echo \"Successfully released version $npm_package_version!\"",
     "--publish:git": "cross-var git add . && git commit -m \"chore(publish): version v$npm_package_version\" && git push --follow-tags && git push",
     "--publish:npm": "cross-var cross-env npm_config_registry=https://registry.npmjs.org/ npm publish --access=public --tag $npm_package_version",
-    "deploy": "np",
-    "release": "np --no-publish",
+    "--release": "np --no-publish",
     "--postrelease": "npm publish"
   },
   "peerDependencies": {},
