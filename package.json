@@ -14,7 +14,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=10"
   },
   "files": [
     "dist/**/*"
