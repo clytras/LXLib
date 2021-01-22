@@ -70,7 +70,7 @@ async function fixSourceMapPaths() {
       const json = fs.readFileSync(file, { encoding: 'utf-8' });
       const data = JSON.parse(json);
 
-      if (data?.sources?.length > 0) {
+      if (data && data.sources && data.sources.length > 0) {
         data.sources = data.sources.map(source => source.replace(/.*\/src/, './src'));
         fs.writeFileSync(file, JSON.stringify(data), { encoding: 'utf-8' });
         fixedFiles++;
