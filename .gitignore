@@ -1,5 +1,6 @@
 *.log
 .DS_Store
 .watchman*
-node_modules
-dist
+node_modules/
+dist/
+release/

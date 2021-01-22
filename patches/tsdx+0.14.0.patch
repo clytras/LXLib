@@ -204,7 +204,7 @@ index d2322e5..184af12 100755
 -function writeCjsEntryFile(name) {
 -    const baseLine = `module.exports = require('./${utils_1.safePackageName(name)}`;
 +function writeCjsEntryFile(file, numEntries) {
-+    const baseLine = `module.exports = require('./${file}`;
++    const baseLine = `module.exports = require('./${path_1.default.basename(file)}`;
      const contents = `
  'use strict'
 
