@@ -1,5 +1,3 @@
-// https://github.com/MauriceButler/cryptr
-// import crypto from 'crypto';
 const crypto = require('crypto');
 const Cryptr = require('../src/utils/cryptr').default;
 
@@ -11,6 +9,7 @@ const tagLength = 16;
 const tagPosition = saltLength + ivLength;
 const encryptedPosition = tagPosition + tagLength;
 
+// https://github.com/MauriceButler/cryptr
 // This is the originbal JS version of the function
 // that we will compare with the new TS class version.
 function OriginalCryptr(secret, options) {
@@ -85,13 +84,14 @@ function OriginalCryptr(secret, options) {
 }
 
 describe('utils:cryptr', () => {
-  const data = 'This is the text to test encrypt/decrypt';
+  const data =
+    'This is the text to test encrypt/decrypt (with unicode ßáÇÖÑ 🥓)';
   const secret = 'ThisIsTheSecret';
   let oldCryptr, oldEncryptedData;
   let newCryptr, newEncryptedData;
 
   it('should encrypt/decrypt (old cryptr)', () => {
-    // Test old JS function decriptr
+    // Test old JS function decryptr
     oldCryptr = new OriginalCryptr(secret);
 
     oldEncryptedData = oldCryptr.encrypt(data);
@@ -102,7 +102,7 @@ describe('utils:cryptr', () => {
   });
 
   it('should encrypt/decrypt (new cryptr)', () => {
-    // Test new TS class decriptr
+    // Test new TS class decryptr
     newCryptr = new Cryptr(secret);
 
     newEncryptedData = newCryptr.encrypt(data);
