@@ -139,7 +139,10 @@ async function patchPackageJson() {
     const file = `${releasePath}/package.json`;
     const json = fs.readFileSync(`${releasePath}/package.json`, { encoding: 'utf-8' });
     const data = JSON.parse(json);
+
+    delete data.files;
     delete data.scripts.postinstall;
+
     fs.writeFileSync(file, JSON.stringify(data, null, 2), { encoding: 'utf-8' });
     patchPkgJsonSpinner.succeed();
     return true;
