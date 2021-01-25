@@ -23,6 +23,7 @@
     "start": "tsdx watch",
     "build": "tsdx build --entry src/**/*.ts",
     "test": "tsdx test",
+    "test:coverage": "tsdx test --coverage",
     "lint": "tsdx lint src",
     "postinstall": "patch-package",
     "version": "node ./scripts/makeRelease.js",
