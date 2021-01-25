@@ -69,8 +69,6 @@ Always commit everything before publishing new releases.
 
 Running `np` will have the `version` script executed which will run the `makeRelease` script.
 
-Remember to always use **`NodeJS >= 14`** because of features used by the scripts.
-
 ## License
 
 MIT [LICENSE][license]
