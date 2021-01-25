@@ -39,23 +39,6 @@ fetchTimeout('https://myurl.data',
 );
 ```
 
-### `fetchTimeout` from `utils`
-
-```javascript
-import { disableConsole } from '@lytrax/lxlib/utils';
-
-// Will timeout after 5s if fetch won't get a reply
-disableConsole(
-  someBooleanExpressionOrValue,
-  [
-    // Methods to disable,
-    // with default apply to all methods of console
-    'error',
-    'warn',
-  ]
-);
-```
-
 ## Classes
 
 ### `Cryptr` from `utils/cryptr`
