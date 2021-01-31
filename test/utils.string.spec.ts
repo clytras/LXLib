@@ -1,8 +1,8 @@
 import { normalizeGreek } from '../src/utils/string';
 
-describe('utils/string', () =>{
+describe('utils/string', () => {
   it('should normalize greek', () => {
-    const testStrings: [string, string][] = [
+    const testStrings = [
       ['Δοκιμή', 'Δοκιμη'],
       ['Αλφαριθμητικό', 'Αλφαριθμητικο'],
       ['Απελπισία', 'Απελπισια'],
