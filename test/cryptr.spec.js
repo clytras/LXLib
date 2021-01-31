@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-const Cryptr = require('../src/utils/cryptr').default;
+const Cryptr = require('../src/crypto/cryptr').default;
 
 const defaultAlgorithm = 'aes-256-gcm';
 const defaultEncoding = 'base64';

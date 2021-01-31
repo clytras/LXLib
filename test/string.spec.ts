@@ -1,4 +1,4 @@
-import { normalizeGreek } from '../src/utils/string';
+import { normalizeGreek } from '../src/string';
 
 describe('utils/string', () => {
   it('should normalize greek', () => {
