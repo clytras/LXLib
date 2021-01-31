@@ -39,6 +39,15 @@ fetchTimeout('https://myurl.data',
 );
 ```
 
+
+### `normalizeGreek` from `utils/string`
+
+```javascript
+import { normalizeGreek } from '@lytrax/lxlib/utils/string';
+
+normalizeGreek('Ελληνικό κείμενο που θα φύγουν οι τόνοι');
+```
+
 ## Classes
 
 ### `Cryptr` from `utils/cryptr`
