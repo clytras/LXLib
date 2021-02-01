@@ -2,12 +2,60 @@
 
 ## Functions
 
-### `randomColor` from `utils`
+### `randomColor` from `random`
 
 ```javascript
-import { randomColor } from '@lytrax/lxlib/utils';
+import { randomColor } from '@lytrax/lxlib/random';
 
 const cssRandomColor = randomColor();
+```
+
+### `randomInt` from `random`
+
+```javascript
+import { randomInt } from '@lytrax/lxlib/random';
+
+const randomInt = randomInt(1, 100);
+```
+
+### `dice` from `random`
+
+```javascript
+import { dice } from '@lytrax/lxlib/random';
+
+const diceValue = dice(6);
+```
+
+### `sleep` from `time`
+
+```javascript
+import { sleep } from '@lytrax/lxlib/time';
+
+await sleep(500);
+```
+
+### `uts` from `time`
+
+```javascript
+import { uts } from '@lytrax/lxlib/time';
+
+const unitTimeStamp = uts(); // UTS in seconds
+```
+
+### `utsj` from `time`
+
+```javascript
+import { utsj } from '@lytrax/lxlib/time';
+
+const unitTimeStampMillis = utsj(); // UTS in milliseconds
+```
+
+### `timeHash` from `time`
+
+```javascript
+import { timeHash } from '@lytrax/lxlib/time';
+
+const hash = timeHash(); // kkluv4t0
 ```
 
 ### `toFormData` from `utils`
@@ -40,21 +88,21 @@ fetchTimeout('https://myurl.data',
 ```
 
 
-### `normalizeGreek` from `utils/string`
+### `normalizeGreek` from `string`
 
 ```javascript
-import { normalizeGreek } from '@lytrax/lxlib/utils/string';
+import { normalizeGreek } from '@lytrax/lxlib/string';
 
 normalizeGreek('Ελληνικό κείμενο που θα φύγουν οι τόνοι');
 ```
 
 ## Classes
 
-### `Cryptr` from `utils/cryptr`
+### `Cryptr` from `crypto/cryptr`
 
 ```javascript
 // https://github.com/MauriceButler/cryptr with options
-import Cryptr from '@lytrax/lxlib/utils/cryptr';
+import Cryptr from '@lytrax/lxlib/crypto/cryptr';
 
 const cryptr = new Cryptr('mysecret', {
   algorithm: 'aes-256-gcm',  // 'aes-256-gcm' is the default value
