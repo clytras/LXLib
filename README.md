@@ -87,13 +87,162 @@ fetchTimeout('https://myurl.data',
 );
 ```
 
-
 ### `normalizeGreek` from `string`
 
 ```javascript
 import { normalizeGreek } from '@lytrax/lxlib/string';
 
 normalizeGreek('Ελληνικό κείμενο που θα φύγουν οι τόνοι');
+```
+
+### `camelize` from `string`
+
+```javascript
+import { camelize } from '@lytrax/lxlib/string';
+
+camelize('Some text to camelize'); // "SomeTextToCamelize"
+```
+
+### `toTitleCase` from `string`
+
+```javascript
+import { toTitleCase } from '@lytrax/lxlib/string';
+
+toTitleCase('Some text to title case') // "Some Text To Title Case"
+```
+
+### `toSentence` from `string`
+
+```javascript
+import { toSentence } from '@lytrax/lxlib/string';
+
+toSentence('Some Text TO SENTENCE') // "Some text to sentence"
+```
+
+### `makeLines` from `string`
+
+```javascript
+import { makeLines } from '@lytrax/lxlib/string';
+
+makeLines({ lines: ['make', 'some', 'lines'] }) // "make↵some↵lines"
+```
+
+### `nl2br` from `string`
+
+```javascript
+import { nl2br } from '@lytrax/lxlib/string';
+
+nl2br('Some\ntext\nwith\nlines') // "Some<br/>text<br/>with<br/>lines"
+```
+
+### `removeAllWhitespaces` from `string`
+
+```javascript
+import { removeAllWhitespaces } from '@lytrax/lxlib/string';
+
+removeAllWhitespaces('Text   With \tWitespaces\t\t') // "TextWithWitespaces"
+```
+
+### `decodeHtmlCharCodes` from `string`
+
+```javascript
+import { decodeHtmlCharCodes } from '@lytrax/lxlib/string';
+
+decodeHtmlCharCodes('This&#32;is&#10;some&#32;text') // "This is↵some text"
+```
+
+### `toJsonIntended` from `string`
+
+```javascript
+import { toJsonIntended } from '@lytrax/lxlib/string';
+
+toJsonIntended({some: 'Some', one: 1})
+// {
+//   "some": "Some",
+//   "one": 1
+// }
+```
+
+### `format` from `string`
+
+```javascript
+import { format } from '@lytrax/lxlib/string';
+
+format('My name is {name} and my IQ is {IQ}', { name: 'Christos', IQ: 111 })
+// "My name is Christos and my IQ is 111"
+```
+
+### `translateBool` from `string`
+
+```javascript
+import { translateBool } from '@lytrax/lxlib/string';
+
+translateBool('Yes') // true
+```
+
+### `quoteSingle` from `string`
+
+```javascript
+import { quoteSingle } from '@lytrax/lxlib/string';
+
+quoteSingle('test') // "'test'"
+```
+
+### `quoteDouble` from `string`
+
+```javascript
+import { quoteDouble } from '@lytrax/lxlib/string';
+
+quoteDouble('test') // ""test""
+```
+
+### `quoteBacktick` from `string`
+
+```javascript
+import { quoteBacktick  } from '@lytrax/lxlib/string';
+
+quoteBacktick('test') // "`test`"
+```
+
+### `quoteLRSingle` from `string`
+
+```javascript
+import { quoteLRSingle } from '@lytrax/lxlib/string';
+
+quoteLRSingle('test') // "‘test’"
+```
+
+### `quoteLRDouble` from `string`
+
+```javascript
+import { quoteLRDouble } from '@lytrax/lxlib/string';
+
+quoteLRDouble('test') // "“test”"
+```
+
+### `quote` from `string`
+
+```javascript
+import { quote } from '@lytrax/lxlib/string';
+
+quote('test', 'backtick') // "`test`"
+```
+
+### `quoteIf` from `string`
+
+```javascript
+import { quoteIf } from '@lytrax/lxlib/string';
+
+quoteIf('', 'single') // ""
+```
+
+### `numToSSColumn` from `string`
+
+```javascript
+// Number to SpreadSheet column
+import { numToSSColumn } from '@lytrax/lxlib/string';
+
+numToSSColumn(29) // "AC"
 ```
 
 ## Classes
@@ -115,7 +264,7 @@ const decryptedData = cryptr.decrypt(encryptedBase64);
 
 ## Development
 
-- Commit changes to GitHub using [commitizen][commitizen] `git gz`
+- Commit changes to GitHub using [commitizen][commitizen] `git cz`
 
 ## Publish
 
