@@ -4,7 +4,8 @@ describe('time', () => {
   it('should sleep', async () => {
     for (let advance = 5; advance < 50; advance += 5) {
       let start = new Date().getTime();
-      await sleep(advance);
+      // add 5 because there are cases that we get 1 ms lower than the advance time
+      await sleep(advance + 5);
       let duration = new Date().getTime() - start;
       expect(duration).toBeGreaterThanOrEqual(advance);
     }

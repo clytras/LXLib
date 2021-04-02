@@ -15,7 +15,17 @@ const cssRandomColor = randomColor();
 ```javascript
 import { randomInt } from '@lytrax/lxlib/random';
 
-const randomInt = randomInt(1, 100);
+const randInt = randomInt(1, 100);
+```
+
+### `randomIndex` from `random`
+
+```javascript
+import { randomIndex } from '@lytrax/lxlib/random';
+
+<index> = randomIndex(10); // index range 0..9
+<index> = randomIndex(10, { inclusive: true }); // index range 0..10
+<index> = randomIndex(10, { startFrom: 2 }); // index range 2..9
 ```
 
 ### `dice` from `random`
@@ -39,7 +49,7 @@ await sleep(500);
 ```javascript
 import { uts } from '@lytrax/lxlib/time';
 
-const unitTimeStamp = uts(); // UTS in seconds
+const unixTimeStamp = uts(); // UTS in seconds
 ```
 
 ### `utsj` from `time`
@@ -47,7 +57,7 @@ const unitTimeStamp = uts(); // UTS in seconds
 ```javascript
 import { utsj } from '@lytrax/lxlib/time';
 
-const unitTimeStampMillis = utsj(); // UTS in milliseconds
+const unixTimeStampMillis = utsj(); // UTS in milliseconds
 ```
 
 ### `timeHash` from `time`
