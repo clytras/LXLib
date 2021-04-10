@@ -2,6 +2,14 @@
 
 ## Functions
 
+### `bitCount32` from `math`
+
+```javascript
+import { bitCount32 } from '@lytrax/lxlib/math';
+
+const biteLength = bitCount32(0x55555555); // 16 flagged bits
+```
+
 ### `randomColor` from `random`
 
 ```javascript
@@ -23,9 +31,9 @@ const randInt = randomInt(1, 100);
 ```javascript
 import { randomIndex } from '@lytrax/lxlib/random';
 
-<index> = randomIndex(10); // index range 0..9
-<index> = randomIndex(10, { inclusive: true }); // index range 0..10
-<index> = randomIndex(10, { startFrom: 2 }); // index range 2..9
+index = randomIndex(10); // index range 0..9
+index = randomIndex(10, { inclusive: true }); // index range 0..10
+index = randomIndex(10, { startFrom: 2 }); // index range 2..9
 ```
 
 ### `dice` from `random`
