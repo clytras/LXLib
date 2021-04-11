@@ -1,5 +1,11 @@
 import isHexColor from 'validator/lib/isHexColor';
-import { randomColor, randomInt, randomIndex, dice } from '../src/random';
+import {
+  randomColor,
+  randomInt,
+  randomIntNotIn,
+  randomIndex,
+  dice,
+} from '../src/random';
 
 describe('utils', () => {
   it('should validate randomColor', () => {
@@ -17,6 +23,26 @@ describe('utils', () => {
       expect(n2).toBeGreaterThanOrEqual(1);
       expect(n2).toBeLessThanOrEqual(10);
       expect(n2).not.toStrictEqual(rnd);
+    }
+  });
+
+  it('should generate random int in range excluding array', () => {
+    for (let loops = 0; loops < 100; loops++) {
+      const n1 = randomIntNotIn(-100, 100);
+      expect(n1).toBeGreaterThanOrEqual(-100);
+      expect(n1).toBeLessThanOrEqual(100);
+
+      const rndsOds = [1, 3, 5, 7, 9];
+      const n2 = randomIntNotIn(1, 10, rndsOds);
+      expect(n2).toBeGreaterThanOrEqual(1);
+      expect(n2).toBeLessThanOrEqual(10);
+      expect(rndsOds.indexOf(n2) === -1).toBeTruthy();
+
+      const rndsEven = [2, 4, 6, 8, 10];
+      const n3 = randomIntNotIn(1, 10, rndsEven);
+      expect(n3).toBeGreaterThanOrEqual(1);
+      expect(n3).toBeLessThanOrEqual(10);
+      expect(rndsEven.indexOf(n3) === -1).toBeTruthy();
     }
   });
 

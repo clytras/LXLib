@@ -26,6 +26,15 @@ import { randomInt } from '@lytrax/lxlib/random';
 const randInt = randomInt(1, 100);
 ```
 
+### `randomIntNotIn` from `random`
+
+```javascript
+import { randomIntNotIn } from '@lytrax/lxlib/random';
+
+// randInt <=> 1..10 and <> 2, 4, 6
+const randInt = randomIntNotIn(1, 10, [2, 4, 6]);
+```
+
 ### `randomIndex` from `random`
 
 ```javascript

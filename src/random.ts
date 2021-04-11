@@ -22,6 +22,19 @@ export function randomInt(
   return result;
 }
 
+export function randomIntNotIn(min: number, max: number, notIn?: number[]) {
+  let result;
+
+  min = Math.ceil(min);
+  max = Math.floor(max);
+
+  do {
+    result = Math.floor(Math.random() * (max - min + 1)) + min;
+  } while (notIn && notIn.indexOf(result) >= 0);
+
+  return result;
+}
+
 interface RandomIndexOptions {
   startFrom?: number;
   inclusive?: boolean;
