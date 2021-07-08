@@ -7,7 +7,7 @@
 ```javascript
 import { bitCount32 } from '@lytrax/lxlib/math';
 
-const biteLength = bitCount32(0x55555555); // 16 flagged bits
+const bitLength = bitCount32(0x55555555); // 16 flagged bits
 ```
 
 ### `randomColor` from `random`

@@ -24,7 +24,12 @@ export function toFormData(
       ) {
         toFormData(obj[property], fd, formKey);
       } else {
-        // if it's a string or a File object
+        // if it's a primitive or a File object
+        let value = obj[property];
+        if (typeof value === 'boolean') {
+          // convert boolean to number
+          value = value ? 1 : 0;
+        }
         fd.append(formKey, obj[property]);
       }
     }
