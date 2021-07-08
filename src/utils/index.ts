@@ -30,7 +30,7 @@ export function toFormData(
           // convert boolean to number
           value = value ? 1 : 0;
         }
-        fd.append(formKey, obj[property]);
+        fd.append(formKey, value);
       }
     }
   }
