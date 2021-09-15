@@ -4,7 +4,7 @@
     "name": "Christos Lytras",
     "email": "christos.lytras@gmail.com"
   },
-  "version": "0.8.1",
+  "version": "0.9.0",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/lxlib.esm.js",
