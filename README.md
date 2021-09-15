@@ -272,6 +272,15 @@ import { numToSSColumn } from '@lytrax/lxlib/string';
 numToSSColumn(29) // "AC"
 ```
 
+### `uniqueChars` from `string`
+
+```javascript
+// Number to SpreadSheet column
+import { uniqueChars } from '@lytrax/lxlib/string';
+
+uniqueChars('ABCabcABCabc/iumi/') // "ABCabc/ium"
+```
+
 ## Classes
 
 ### `Cryptr` from `crypto/cryptr`

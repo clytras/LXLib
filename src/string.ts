@@ -128,3 +128,13 @@ export function numToSSColumn(num: number) {
   }
   return s || undefined;
 }
+
+export function uniqueChars(str: string) {
+  let result = '';
+  for (let i = 0; i < str.length; i++) {
+    if (result.indexOf(str[i]) < 0) {
+      result += str[i];
+    }
+  }
+  return result;
+}
