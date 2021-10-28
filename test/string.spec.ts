@@ -157,6 +157,9 @@ describe('utils/string', () => {
 
   it('should apply backspace character', () => {
     const testStrings = [
+      ['', ''],
+      ['\b', ''],
+      ['\b\b\b\b', ''],
       ['Δοκιμή\b', 'Δοκιμ'],
       ['Αλφα\b\bριθμητικό\b\b\b', 'Αλριθμητ'],
       ['Thi\bnk Bi\bg', 'Thnk Bg'],

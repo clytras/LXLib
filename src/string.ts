@@ -140,41 +140,17 @@ export function uniqueChars(str: string) {
 }
 
 export function applyBackspaceChar(str: string) {
-  let result = str;
-  let start = -1;
-  let count = 0;
+  let result = '';
 
   for (let i = 0; i < str.length; i++) {
     if (str[i] === '\b') {
-      --count;
-      if (start < 0) {
-        start = i;
+      if (result.length > 0) {
+        result = result.slice(0, -1);
       }
-
-      if (i === str.length - 1) {
-        count = -count;
-      }
-    } else if (start >= 0) {
-      count = -count;
-    }
-
-    if (count > 0) {
-      let a = start - count;
-      let b: number;
-
-      if (a < 0) {
-        b = count + a;
-        a = 0;
-      } else {
-        b = start;
-      }
-
-      result =
-        result.substring(0, a) + '\b'.repeat(b - a) + result.substring(b + 0);
-      start = -1;
-      count = 0;
+    } else {
+      result += str[i];
     }
   }
 
-  return result.replace(/[\b]/g, '');
+  return result;
 }

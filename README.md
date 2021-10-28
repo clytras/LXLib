@@ -1,5 +1,7 @@
 # LytraX JS/TS library
 
+A collection of useful functions/classes for string/time manipulation, math/random calculations and encryption.
+
 ## Functions
 
 ### `bitCount32` from `math`
