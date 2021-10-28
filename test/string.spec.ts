@@ -18,6 +18,7 @@ import {
   quote,
   quoteIf,
   numToSSColumn,
+  applyBackspaceChar,
 } from '../src/string';
 import { spreadsheetColumnNumbers } from './string.helpers';
 
@@ -152,5 +153,22 @@ describe('utils/string', () => {
       const check = spreadsheetColumnNumbers[i];
       expect(numToSSColumn(i + 1)).toBe(check);
     }
+  });
+
+  it('should apply backspace character', () => {
+    const testStrings = [
+      ['Δοκιμή\b', 'Δοκιμ'],
+      ['Αλφα\b\bριθμητικό\b\b\b', 'Αλριθμητ'],
+      ['Thi\bnk Bi\bg', 'Thnk Bg'],
+      ['Th\b\b\bis\b a test expr\bes\bsion', 'i a test expesion'],
+      [
+        'Apply\b   some\b   back\b\b\b\b\bspaces   \b\b\b',
+        'Appl   som  spaces',
+      ],
+    ];
+
+    testStrings.forEach(([before, after]) => {
+      expect(applyBackspaceChar(before)).toBe(after);
+    });
   });
 });

@@ -281,6 +281,15 @@ import { uniqueChars } from '@lytrax/lxlib/string';
 uniqueChars('ABCabcABCabc/iumi/') // "ABCabc/ium"
 ```
 
+### `applyBackspaceChar` from `string`
+
+```javascript
+// Apply all backspaces to the string
+import { applyBackspaceChar } from '@lytrax/lxlib/string';
+
+applyBackspaceChar('Test small\b\b\b\b\b line!\b') // "Test line"
+```
+
 ## Classes
 
 ### `Cryptr` from `crypto/cryptr`
