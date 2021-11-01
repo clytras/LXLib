@@ -292,6 +292,17 @@ import { applyBackspaceChar } from '@lytrax/lxlib/string';
 applyBackspaceChar('Test small\b\b\b\b\b line!\b') // "Test line"
 ```
 
+### `removeRepeatedChars` from `string`
+
+```javascript
+// Remove all/selected repeated characters from the string
+import { removeRepeatedChars } from '@lytrax/lxlib/string';
+
+removeRepeatedChars('aa bbb word aaa cat aaaa cccc') // "a b word a cat a c"
+removeRepeatedChars('This   is  aaa test', ' ') // "This is aaa test"
+removeRepeatedChars('This   is  aaa test', ' a') // "This is a test"
+```
+
 ## Classes
 
 ### `Cryptr` from `crypto/cryptr`

@@ -19,6 +19,7 @@ import {
   quoteIf,
   numToSSColumn,
   applyBackspaceChar,
+  removeRepeatedChars,
 } from '../src/string';
 import { spreadsheetColumnNumbers } from './string.helpers';
 
@@ -172,6 +173,31 @@ describe('utils/string', () => {
 
     testStrings.forEach(([before, after]) => {
       expect(applyBackspaceChar(before)).toBe(after);
+    });
+  });
+
+  it('should remove repeated characters', () => {
+    const testStrings = [
+      ['', ''],
+      ['   ', ' '],
+      ['   ', '   ', 'a'],
+      ['aa aaa aaaa', 'a a a'],
+      ['aa  aaa  aaaa', 'aa aaa aaaa', ' '],
+      ['aa bbb word aaa cat aaaa cccc', 'a b word a cat a c'],
+      ['aa bbb word aaa cat aaaa cccc', 'a bbb word a cat a cccc', 'a'],
+      ['aa bbb word aaa cat aaaa cccc', 'aa b word aaa cat aaaa cccc', 'b'],
+      ['aa bbb word aaa cat aaaa cccc', 'aa b word aaa cat aaaa c', 'bc'],
+      [
+        'This  is aaaaaaa   test\nWith\n\nSome  aaa   new\n\n\n    a Lines   !\n',
+        'This is a test\nWith\nSome a new\n a Lines !\n',
+      ],
+      ['Uni: αβγ ααα βββ γγγ γβα', 'Uni: αβγ α β γ γβα'],
+      ['Uni: αβγ ααα βββ γγγ γβα', 'Uni: αβγ α βββ γγγ γβα', 'α'],
+      ['Uni: αβγ ααα βββ γγγ γβα', 'Uni: αβγ α βββ γ γβα', 'αγ'],
+    ];
+
+    testStrings.forEach(([before, after, chars]) => {
+      expect(removeRepeatedChars(before, chars)).toBe(after);
     });
   });
 });

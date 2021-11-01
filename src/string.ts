@@ -131,11 +131,40 @@ export function numToSSColumn(num: number) {
 
 export function uniqueChars(str: string) {
   let result = '';
+
   for (let i = 0; i < str.length; i++) {
     if (result.indexOf(str[i]) < 0) {
       result += str[i];
     }
   }
+
+  return result;
+}
+
+export function removeRepeatedChars(str: string, chars: string | null = null) {
+  let result = '';
+  let prev = '';
+  let rmPrev = false;
+
+  for (let i = 0; i < str.length; i++) {
+    if (prev === str[i]) {
+      if (!rmPrev) {
+        result += str[i];
+      }
+      prev = str[i];
+      continue;
+    }
+
+    if (chars) {
+      rmPrev = chars.indexOf(str[i]) >= 0;
+    } else {
+      rmPrev = true;
+    }
+
+    result += str[i];
+    prev = str[i];
+  }
+
   return result;
 }
 
