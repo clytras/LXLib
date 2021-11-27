@@ -72,7 +72,7 @@ describe('time', () => {
 
   it('should validate date keys', () => {
     const values: [DateKey, number][] = [
-      [{ year: 1999, month: 7, day: 1}, 19990701],
+      [{ year: 1999, month: 7, day: 1 }, 19990701],
       [{ year: 1821, month: 3, day: 25 }, 18210325],
       [{ year: 1982, month: 7, day: 1 }, 19820701],
     ];

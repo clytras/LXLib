@@ -110,7 +110,7 @@ const resolved = monthKey.resolve(key); // { year: 2021, month: 7 }
 ```javascript
 import { dateKey } from '@lytrax/lxlib/time';
 
-const key = dateKey({year: 2021, month: 7, day: 1}); // 20210701
+const key = dateKey({ year: 2021, month: 7, day: 1 }); // 20210701
 const resolved = dateKey.resolve(key); // {year: 2021, month: 7, day: 1}
 ```
 
