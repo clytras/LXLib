@@ -87,6 +87,33 @@ import { timeHash } from '@lytrax/lxlib/time';
 const hash = timeHash(); // kkluv4t0
 ```
 
+### `dayKey` from `time`
+
+```javascript
+import { dayKey } from '@lytrax/lxlib/time';
+
+const key = dayKey({ year: 2021, ordinal: 111 }); // 2021111
+const resolved = dayKey.resolve(key); // { year: 2021, ordinal: 111 }
+```
+
+### `monthKey` from `time`
+
+```javascript
+import { monthKey } from '@lytrax/lxlib/time';
+
+const key = monthKey({ year: 2021, month: 7 }); // 202107
+const resolved = monthKey.resolve(key); // { year: 2021, month: 7 }
+```
+
+### `dateKey` from `time`
+
+```javascript
+import { dateKey } from '@lytrax/lxlib/time';
+
+const key = dateKey({year: 2021, month: 7, day: 1}); // 20210701
+const resolved = dateKey.resolve(key); // {year: 2021, month: 7, day: 1}
+```
+
 ### `toFormData` from `utils`
 
 ```javascript
