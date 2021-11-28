@@ -6,8 +6,10 @@ import {
   dayKey,
   monthKey,
   dateKey,
+  minuteKey,
+  timeKey,
 } from '../src/time';
-import type { DayKey, MonthKey, DateKey } from '../src/time';
+import type { DayKey, MonthKey, DateKey, TimeKey } from '../src/time';
 
 describe('time', () => {
   it('should sleep', async () => {
@@ -82,6 +84,40 @@ describe('time', () => {
       expect(key).toBe(k);
 
       const resolved = dateKey.resolve(key);
+      expect(resolved).toMatchObject(o);
+    }
+  });
+
+  it('should validate minute keys', () => {
+    const values: [TimeKey, number][] = [
+      [{ hour: 23, minute: 0 }, 2300],
+      [{ hour: 0, minute: 59 }, 59],
+      [{ hour: 1, minute: 1 }, 101],
+      [{ hour: 19, minute: 19 }, 1919],
+    ];
+
+    for (const [o, k] of values) {
+      const key = minuteKey(o);
+      expect(key).toBe(k);
+
+      const resolved = minuteKey.resolve(key);
+      expect(resolved).toMatchObject(o);
+    }
+  });
+
+  it('should validate time keys', () => {
+    const values: [TimeKey, number][] = [
+      [{ hour: 23, minute: 0, second: 0 }, 230000],
+      [{ hour: 0, minute: 0, second: 59 }, 59],
+      [{ hour: 1, minute: 1, second: 1 }, 10101],
+      [{ hour: 19, minute: 19, second: 19 }, 191919],
+    ];
+
+    for (const [o, k] of values) {
+      const key = timeKey(o);
+      expect(key).toBe(k);
+
+      const resolved = timeKey.resolve(key);
       expect(resolved).toMatchObject(o);
     }
   });

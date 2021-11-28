@@ -111,7 +111,25 @@ const resolved = monthKey.resolve(key); // { year: 2021, month: 7 }
 import { dateKey } from '@lytrax/lxlib/time';
 
 const key = dateKey({ year: 2021, month: 7, day: 1 }); // 20210701
-const resolved = dateKey.resolve(key); // {year: 2021, month: 7, day: 1}
+const resolved = dateKey.resolve(key); // { year: 2021, month: 7, day: 1 }
+```
+
+### `minuteKey` from `time`
+
+```javascript
+import { minuteKey } from '@lytrax/lxlib/time';
+
+const key = minuteKey({ hour: 23, minute: 30 }); // 2330
+const resolved = minuteKey.resolve(key); // { hour: 23, minute: 30, second: 0 }
+```
+
+### `timeKey` from `time`
+
+```javascript
+import { timeKey } from '@lytrax/lxlib/time';
+
+const key = timeKey({ hour: 23, minute: 30, second: 59 }); // 233059
+const resolved = minuteKey.timeKey(key); // { hour: 23, minute: 30, second: 59 }
 ```
 
 ### `toFormData` from `utils`

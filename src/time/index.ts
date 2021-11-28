@@ -79,3 +79,46 @@ dateKey.resolve = function (key: number) {
   const month = ym - year * 100;
   return { year, month, day };
 };
+
+export type TimeKey = object & {
+  hour: number;
+  minute: number;
+  second?: number;
+};
+
+/**
+ * A lightweight key for Luxon DateTime hours + minutes
+ *
+ * @param {DateTime} dateTime
+ * @returns number
+ */
+export function minuteKey(dateTime: TimeKey) {
+  return dateTime.hour * 100 + dateTime.minute;
+}
+
+minuteKey.resolve = function (key: number) {
+  const hour = Math.floor(key / 100);
+  const minute = key - hour * 100;
+  return { hour, minute, second: 0 };
+};
+
+/**
+ * A lightweight key for Luxon DateTime hours + minutes + seconds
+ *
+ * @param {DateTime} dateTime
+ * @returns number
+ */
+export function timeKey(dateTime: TimeKey) {
+  return dateTime.hour * 1e4 + dateTime.minute * 100 + dateTime.second!;
+}
+
+timeKey.resolve = function (key: number) {
+  const hm = Math.floor(key / 100);
+  const second = key - hm * 100;
+  // const minute = key - hour * 1e4;
+
+  const hour = Math.floor(hm / 100);
+  const minute = hm - hour * 100;
+
+  return { hour, minute, second };
+};
