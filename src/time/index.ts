@@ -30,7 +30,7 @@ export function dayKey(dateTime: DayKey) {
 }
 
 dayKey.resolve = function (key: number) {
-  const year = Math.floor(key / 1e3);
+  const year = (key / 1e3) | 0; // Slightly fastest floor
   const ordinal = key - year * 1e3;
   return { year, ordinal };
 };
@@ -51,7 +51,7 @@ export function monthKey(dateTime: MonthKey) {
 }
 
 monthKey.resolve = function (key: number) {
-  const year = Math.floor(key / 100);
+  const year = (key / 100) | 0; // Slightly fastest floor
   const month = key - year * 100;
   return { year, month };
 };
@@ -73,9 +73,9 @@ export function dateKey(dateTime: DateKey) {
 }
 
 dateKey.resolve = function (key: number) {
-  const ym = Math.floor(key / 100);
+  const ym = (key / 100) | 0; // Slightly fastest floor
   const day = key - ym * 100;
-  const year = Math.floor(ym / 100);
+  const year = (ym / 100) | 0; // Slightly fastest floor
   const month = ym - year * 100;
   return { year, month, day };
 };
@@ -97,7 +97,7 @@ export function minuteKey(dateTime: TimeKey) {
 }
 
 minuteKey.resolve = function (key: number) {
-  const hour = Math.floor(key / 100);
+  const hour = (key / 100) | 0; // Slightly fastest floor
   const minute = key - hour * 100;
   return { hour, minute, second: 0 };
 };
@@ -113,12 +113,19 @@ export function timeKey(dateTime: TimeKey) {
 }
 
 timeKey.resolve = function (key: number) {
-  const hm = Math.floor(key / 100);
+  const hm = (key / 100) | 0; // Slightly fastest floor
   const second = key - hm * 100;
-  // const minute = key - hour * 1e4;
-
-  const hour = Math.floor(hm / 100);
+  const hour = (hm / 100) | 0;
   const minute = hm - hour * 100;
-
   return { hour, minute, second };
 };
+
+export function timeToMinutes(dateTime: TimeKey) {
+  return dateTime.hour * 60 + dateTime.minute;
+}
+
+export function minutesToTime(minutes: number) {
+  const hour = (minutes / 60) | 0; // Slightly fastest floor
+  const minute = minutes % 60;
+  return { hour, minute };
+}

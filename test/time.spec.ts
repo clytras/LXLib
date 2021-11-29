@@ -8,6 +8,8 @@ import {
   dateKey,
   minuteKey,
   timeKey,
+  timeToMinutes,
+  minutesToTime,
 } from '../src/time';
 import type { DayKey, MonthKey, DateKey, TimeKey } from '../src/time';
 
@@ -119,6 +121,23 @@ describe('time', () => {
 
       const resolved = timeKey.resolve(key);
       expect(resolved).toMatchObject(o);
+    }
+  });
+
+  it('should convert time to minutes', () => {
+    const values: [TimeKey, number][] = [
+      [{ hour: 23, minute: 0 }, 1380],
+      [{ hour: 0, minute: 59 }, 59],
+      [{ hour: 1, minute: 1 }, 61],
+      [{ hour: 19, minute: 19 }, 1159],
+    ];
+
+    for (const [o, k] of values) {
+      const minutes = timeToMinutes(o);
+      expect(minutes).toBe(k);
+
+      const time = minutesToTime(minutes);
+      expect(time).toMatchObject(o);
     }
   });
 });

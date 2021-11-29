@@ -132,6 +132,22 @@ const key = timeKey({ hour: 23, minute: 30, second: 59 }); // 233059
 const resolved = minuteKey.timeKey(key); // { hour: 23, minute: 30, second: 59 }
 ```
 
+### `timeToMinutes` from `time`
+
+```javascript
+import { timeToMinutes } from '@lytrax/lxlib/time';
+
+const minutes = timeToMinutes({ hour: 23, minute: 30 }); // 1410
+```
+
+### `minutesTotime` from `time`
+
+```javascript
+import { minutesTotime } from '@lytrax/lxlib/time';
+
+const time = minutesTotime(1410); // { hour: 23, minute: 30 }
+```
+
 ### `toFormData` from `utils`
 
 ```javascript
