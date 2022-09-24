@@ -55,3 +55,13 @@ export function dice(max: number, min: number = 1) {
 
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+export function randomId(min: number = 1) {
+  // Don't apply MSB so we can negate the result if needed
+  return randomInt(min, 0x7fffffff);
+}
+
+export function randomId64(min: number = 1) {
+  // Don't apply MSB so we can negate the result if needed
+  return randomInt(min, 0x7fffffffffffffff);
+}

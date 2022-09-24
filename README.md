@@ -42,9 +42,25 @@ const randInt = randomIntNotIn(1, 10, [2, 4, 6]);
 ```javascript
 import { randomIndex } from '@lytrax/lxlib/random';
 
-index = randomIndex(10); // index range 0..9
+let index = randomIndex(10); // index range 0..9
 index = randomIndex(10, { inclusive: true }); // index range 0..10
 index = randomIndex(10, { startFrom: 2 }); // index range 2..9
+```
+
+### `randomId` from `random`
+
+```javascript
+import { randomId } from '@lytrax/lxlib/random';
+
+const id = randomId(); // id range 1..0x7FFFFFFF
+```
+
+### `randomId64` from `random`
+
+```javascript
+import { randomId64 } from '@lytrax/lxlib/random';
+
+const id = randomId64(); // id range 1..0X7FFFFFFFFFFFFFFF
 ```
 
 ### `dice` from `random`
