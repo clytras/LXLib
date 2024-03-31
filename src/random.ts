@@ -1,7 +1,25 @@
+import { hslToRgb } from './color';
+
 export function randomColor(): string {
   return (
     '#' + ('00000' + ((Math.random() * (1 << 24)) | 0).toString(16)).slice(-6)
   );
+}
+
+/**
+ * Creates a HEX color based on random HUE value,
+ * having the saturation and lightness to be at specific levels.
+ *
+ * @param   {number}  saturation The saturation [0-100]
+ * @param   {number}  lightness The lightness [0-100]
+ * @return  {Array}   The RGB representation
+ */
+export function randomHueColor(saturation: number, lightness: number): string {
+  const [r, g, b] = hslToRgb(randomInt(0, 360), saturation, lightness);
+  const hR = r.toString(16).padStart(2, '0');
+  const hG = g.toString(16).padStart(2, '0');
+  const hB = b.toString(16).padStart(2, '0');
+  return `#${hR}${hG}${hB}`;
 }
 
 // https://stackoverflow.com/a/1527820/1889685

@@ -20,6 +20,14 @@ import { randomColor } from '@lytrax/lxlib/random';
 const cssRandomColor = randomColor();
 ```
 
+### `randomHueColor` from `random`
+
+```javascript
+import { randomHueColor } from '@lytrax/lxlib/random';
+
+const cssRandomHueColor = randomHueColor(33, 76);
+```
+
 ### `randomInt` from `random`
 
 ```javascript
@@ -378,6 +386,15 @@ import { removeRepeatedChars } from '@lytrax/lxlib/string';
 removeRepeatedChars('aa bbb word aaa cat aaaa cccc') // "a b word a cat a c"
 removeRepeatedChars('This   is  aaa test', ' ') // "This is aaa test"
 removeRepeatedChars('This   is  aaa test', ' a') // "This is a test"
+```
+
+### `hslToRgb` from `color`
+
+```javascript
+// Apply all backspaces to the string
+import { hslToRgb } from '@lytrax/lxlib/color';
+
+hslToRgb(260, 55, 27)
 ```
 
 ## Classes
