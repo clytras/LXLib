@@ -284,6 +284,12 @@ import { format } from '@lytrax/lxlib/string';
 
 format('My name is {name} and my IQ is {IQ}', { name: 'Christos', IQ: 111 })
 // "My name is Christos and my IQ is 111"
+
+format(
+  'My name is {individual.name} and my business is {individual.business.name}',
+  { individual: { name: 'Christos', IQ: 111, business: { name: 'Crepes' }}}
+)
+// "My name is Christos and my business is Crepes"
 ```
 
 ### `translateBool` from `string`

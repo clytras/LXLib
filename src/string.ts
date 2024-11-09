@@ -67,14 +67,20 @@ export function format(text: string, ...params: any): string {
   let formatted = text;
   let args: any;
 
-  if (params.length === 1 && typeof params[0] == 'object') args = params[0];
-  else args = params;
+  if (params.length === 1 && typeof params[0] === 'object') {
+    args = params[0];
+  } else {
+    args = params;
+  }
 
-  for (let key in args)
-    formatted = formatted.replace(
-      new RegExp('\\{' + key + '\\}', 'gi'),
-      args[key]
-    );
+  const getNestedValue = (obj: any, path: string) => {
+    return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+  };
+
+  formatted = formatted.replace(/\{([^}]+)\}/g, (_, key) => {
+    const value = getNestedValue(args, key);
+    return value !== undefined ? value : `{${key}}`;
+  });
 
   return formatted;
 }
